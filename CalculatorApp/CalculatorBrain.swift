@@ -21,14 +21,20 @@ class CalculatorBrain {
         "pie" : Operation.Constant(M_PI),
         "e" : Operation.Constant(M_E),
         "√" : Operation.UnaryOperation(sqrt),
+        "∛" : Operation.UnaryOperation({pow($0, 1/3)}),
+        "sin" : Operation.UnaryOperation(sin),
         "cos" : Operation.UnaryOperation(cos),
+        "tan" : Operation.UnaryOperation(tan),
+        "%" : Operation.UnaryOperation({$0/100}),
+        "1/x" : Operation.UnaryOperation({1/$0}),
         "±": Operation.UnaryOperation({-$0}),
+        "x^2": Operation.UnaryOperation({pow($0, 2)}),
+        "x^3": Operation.UnaryOperation({pow($0, 3)}),
         "×": Operation.BinaryOperation({ $0 * $1 }),
         "÷": Operation.BinaryOperation({ $0 / $1 }),
         "+": Operation.BinaryOperation({ $0 + $1 }),
         "−": Operation.BinaryOperation({ $0 - $1 }),
         "=": Operation.Equals
-        
     ]
     
     private enum Operation {
