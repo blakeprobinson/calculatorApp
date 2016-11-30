@@ -8,7 +8,19 @@
 
 import Foundation
 
-//global vs instance
+func factorial(operand: Double) -> Double {
+    //check if operand is an integer
+    if operand.rounded(.towardZero) == operand {
+        if operand == 0 || operand == 1 {
+            return Double(1)
+        } else {
+            return operand * factorial(operand: operand-1)
+        }
+    } else {
+        return operand
+    }
+    
+}
 class CalculatorBrain {
     
     private var accumulator = 0.0
@@ -31,6 +43,7 @@ class CalculatorBrain {
         "±": Operation.UnaryOperation({-$0}),
         "x^2": Operation.UnaryOperation({pow($0, 2)}),
         "x^3": Operation.UnaryOperation({pow($0, 3)}),
+        "x!" : Operation.UnaryOperation(factorial),
         "×": Operation.BinaryOperation({ $0 * $1 }),
         "÷": Operation.BinaryOperation({ $0 / $1 }),
         "+": Operation.BinaryOperation({ $0 + $1 }),
