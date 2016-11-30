@@ -26,6 +26,7 @@ class ViewController: UIViewController {
             display.text = digit
         }
         userIsInTheMiddleOfTyping = true
+        brain.setDescription(input: digit)
         
     }
     
@@ -46,8 +47,12 @@ class ViewController: UIViewController {
         }
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(symbol: mathematicalSymbol)
+            if mathematicalSymbol != "=" {
+                brain.setDescription(input: mathematicalSymbol)
+            }
         }
         displayValue = brain.result
+        print(brain.description)
     }
 
 

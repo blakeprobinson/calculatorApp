@@ -12,6 +12,7 @@ import Foundation
 class CalculatorBrain {
     
     private var accumulator = 0.0
+    private var stringAccumulator = ""
     
     func setOperand(operand: Double) {
         accumulator = operand
@@ -60,6 +61,10 @@ class CalculatorBrain {
         }
     }
     
+    func setDescription(input: String) {
+        stringAccumulator += input
+    }
+    
     private func executePendingBinaryOperation() {
         if pending != nil {
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
@@ -77,6 +82,11 @@ class CalculatorBrain {
         //makes property read only
         get {
             return accumulator
+        }
+    }
+    var description: String {
+        get {
+            return stringAccumulator
         }
     }
 }
