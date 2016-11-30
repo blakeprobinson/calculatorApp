@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         }
         displayValue = brain.result
         print(brain.description)
+        print(brain.isPartialResult)
     }
 
 

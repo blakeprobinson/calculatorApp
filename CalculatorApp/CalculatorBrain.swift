@@ -81,6 +81,7 @@ class CalculatorBrain {
     private func executePendingBinaryOperation() {
         if pending != nil {
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
+            pending = nil
         }
     }
     
@@ -100,6 +101,11 @@ class CalculatorBrain {
     var description: String {
         get {
             return stringAccumulator
+        }
+    }
+    var isPartialResult: Bool {
+        get {
+            return (pending != nil) ? true : false
         }
     }
 }
